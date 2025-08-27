@@ -1,0 +1,50 @@
+- The OS kernel is the parent process of all child processes
+  - kernel is the core of the operating system
+  - it provides an interface to hardware devices as well as to process, memory and I/O management
+  - it manages request from users via system calls that switch the process from users space to kernel space
+  - all processes run on top of the kernel
+  - the shell is one important process that run on top of the kernel
+  - the shell eposes an interface that enables users to issue system calls to interact with the os kernel
+- Unix shells:
+  - UNIX executables files
+  - bash and zsh two most popular
+  - /bin holds executable files
+  - in Mac: /usr/local/bin can be used to hold custom unix executables
+  - list of available shells can be found in /etc/shells
+  - Terminal application opens a shell as a sub process
+  - when you run an application in the shell (e.g node), this spins up a new sub process with the parent process being the shell
+- Bash shell
+  - exectuion order:
+    - Aliases => functions => built in functions => path
+  - To see the type of a command in bash we can run:
+    - `type {command}`
+  - PATH global variable
+    - accesed in shell using $PATH
+    - string consisting of different paths in computer separated by a :
+  - Login Shell
+    - type of shell that runs some configuration files to properly setup the shell environment
+    - Will run the following files in order:
+      - /etc/profile
+      - ~/.bash_profile
+        - will run ~/.bash_login or ~/.profile if bash_profile is not found
+      - ~/.bashrc - only fle that gets ran for non-login shell
+- ZSH (like bash but with more features)
+  - Login Shell
+    - Will run the following files in order:
+      - ~/.zprofile
+      - ~/.zshrc - only fle that gets ran for non-login shell
+- Process
+  - every process is a child process of the unix kernel
+  - every process has a process id (PID) and parent process id (PPID)
+  - `echo $$` - see the PID for the current shell
+  - `echo $PPID` - set the PPID for the current shell
+  - When a new process is created, the parent process passes to the child process some things.
+    - E.g bash running a node process, bash will pass to node:
+      - env variables
+      - command line arguments
+      - current working directory
+- Interprocess communication (IPC)
+  - unix concept
+  - communicating between two processes on a sinlge machine using unix domain sockets
+  - usually more performant than networking communication
+  - Data is being moved around in the RAM (does not deal with any netoworking interfaces i.e network card on the computer)
