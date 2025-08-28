@@ -103,3 +103,7 @@ The Close Callbacks phase specifically handles callbacks that are triggered by e
 A TCP server closing with server.close()
 A socket connection ending with socket.on('close', ...)
 A process exiting normally
+
+## Good to Know
+
+4 - Default underlying libuv thread pool size (https://nodejs.org/docs/latest-v22.x/api/cli.html#uv_threadpool_sizesize)
