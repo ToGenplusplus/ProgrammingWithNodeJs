@@ -13,9 +13,9 @@ class Pool {
     this.jobId = 0;
 
     this.initiatePool();
-    setInterval(() => {
-      this.checkForJobSubmissions();
-    }, 1000 * this.jobsCheckerInterval);
+    // setInterval(() => {
+    //   this.checkForJobSubmissions();
+    // }, 1000 * this.jobsCheckerInterval);
   }
 
   initiatePool() {
