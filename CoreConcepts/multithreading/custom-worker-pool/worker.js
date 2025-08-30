@@ -12,9 +12,9 @@ const wInfo = `Worker ${threadId}`;
 // {jobId: number, status"complete"|"error", results: any | null }
 
 function workerMain() {
-  console.log(`${wInfo} has started`);
+  // console.log(`${wInfo} has started`);
   parentPort.on("message", (requestInfo) => {
-    console.log(`${wInfo} recieved the following from parent:`, requestInfo);
+    // console.log(`${wInfo} recieved the following from parent:`, requestInfo);
     const result = validateRecievedJobRequest(requestInfo);
     if (result.error) {
       parentPort.postMessage({
