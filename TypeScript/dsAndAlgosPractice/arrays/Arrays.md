@@ -23,7 +23,7 @@ Clarification questions:
 
 Answers to these questions can lead to identifying the technique to use to solving the problem
 
-Techniques:
+### Techniques
 
 - can an optimal solution be found by iterating through the array from the end?
   - e.g if we needed to find the elements in an array that are greater than all the elements to the right of itself (the leaders).
@@ -35,3 +35,6 @@ Techniques:
 - [prefix sum] (https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/)
 - Can we use dynamic programming? [DP](../algos/dynamicProgramming.md)
 - [sliding window](https://www.geeksforgeeks.org/window-sliding-technique/)
+
+
+### Lessons Learned
