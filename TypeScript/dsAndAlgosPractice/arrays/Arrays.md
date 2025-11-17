@@ -1,9 +1,13 @@
 # Array:
 
 - enables storing data in sequential blocks of memory
-- O(1) retrieval of items if item location is known.
-- O(n) for traversal, insert, deletion, operations.
-- O(n logn) for sorting
+- O(1) 
+  - retrieval of items if item location is known.
+  - appending at the end of the array (majority of the time)
+- O(n) 
+  - for traversal, insert, deletion, operations.
+- O(n logn)
+  - for sorting
 - Use case:
   - require data stored together in memory (cache friendlyness)
   - items are known ahead of time
@@ -23,18 +27,8 @@ Clarification questions:
 
 Answers to these questions can lead to identifying the technique to use to solving the problem
 
-### Techniques
+### Techniques & Lessons Learned
 
 - can an optimal solution be found by iterating through the array from the end?
   - e.g if we needed to find the elements in an array that are greater than all the elements to the right of itself (the leaders).
 - Can an optimal solution be found by revering the elements of the array?
-- [two pointer](https://www.geeksforgeeks.org/two-pointers-technique/)
-  - usecases
-    - for finding pairs
-    - keeping track of elements that need to be changed
-- [prefix sum] (https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/)
-- Can we use dynamic programming? [DP](../algos/dynamicProgramming.md)
-- [sliding window](https://www.geeksforgeeks.org/window-sliding-technique/)
-
-
-### Lessons Learned

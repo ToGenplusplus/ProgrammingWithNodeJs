@@ -28,6 +28,16 @@ let x: [string, number];
 x = ["hello", 10]; // OK
 // x = [10, "hello"]; // Error: Type order is incorrect
 
+
+//set 
+let numberSet = new Set<number>();
+numberSet.add(1);
+numberSet.has(1) // check existence of element in set
+numberSet.delete(1)
+
+numberSet = new Set([1,2,3, 3]) // create a set from an array
+numberSet.size // -> 3
+
 // enum - a way of giving more friendly names to sets of numeric values
 enum Color {
   Red,
@@ -201,9 +211,51 @@ console.log(strLength);
 // The older angle-bracket syntax
 let strLengthLegacy: number = (<string>someValue).length;
 
-/**
- * Conclusion:
- * Start by adding basic types and interfaces to your existing JavaScript code.
- * Then, gradually introduce classes, generics, and other advanced features as you become more comfortable.
- * The compiler and your IDE will be your best friends, providing real-time feedback and powerful autocompletion.
- */
+
+// Maps vs Objects
+// 1. Plain Object Keys (Always Strings/Symbols)
+type UserData = {
+    [key: string]: string; // Keys MUST be strings
+};
+
+const user = { id: 101, name: "Alice" };
+
+const objectCache: UserData = {};
+
+// When you use an object as a key, it's converted to a string: "[object Object]"
+// This means the second assignment overwrites the first.
+objectCache[user.id] = "Alice data"; 
+objectCache[202] = "Bob data"; // 202 is coerced to "202"
+
+console.log(Object.keys(objectCache)); // Output: ["101", "202"]
+
+// Use Plain Object When:
+// 1. You are modeling a known entity (e.g., a User with fixed properties).
+// 2. You need quick access to static, known properties (like a configuration object).
+// 3. You need to serialize the data to JSON (Objects convert easily).
+// 4. You want to use TypeScript interfaces/types to define a fixed structure.
+
+// ---
+
+// 2. Map Keys (Any Type)
+const mapCache = new Map<object | number, string>();
+
+// Use Map When:
+// 1. Key types must be non-string (e.g., using objects, arrays, or functions as keys).
+// 2. You frequently add and remove key-value pairs (better performance).
+// 3. Insertion order must be guaranteed during iteration.
+// 4. Performance for large data collections is a concern (offers O(1) lookups).
+
+// We can use an object reference (user1) as the literal key.
+mapCache.set(user, "Alice data");
+
+// We can use a number (202) as a number key.
+mapCache.set(202, "Bob data");
+
+// We can use an array as a key.
+const settingsKey = [1, 2, 3];
+mapCache.set(settingsKey, "System Settings");
+
+console.log(mapCache.get(user)); // Output: "Alice data" (correctly retrieved)
+console.log(mapCache.get(202));  // Output: "Bob data" (correctly retrieved)
+console.log(mapCache.size);      // Output: 3 (No keys were overwritten)
