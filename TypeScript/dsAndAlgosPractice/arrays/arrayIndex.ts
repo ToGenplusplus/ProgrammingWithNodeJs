@@ -1,3 +1,5 @@
+import { isAlphaNumeric } from "../helpers";
+
 export const arraysMain = () => {
 };
 
@@ -7,7 +9,25 @@ export const arraysMain = () => {
  */
 
 
-// ----- Hashing -----
+// ----------------- Hashing -----------------
+
+/**
+    - efficent for grouping, counting, or finding relationships between elements.
+    - analyze the core propetry of the input values to determine the unique keys that would satisfy the hashmap grouping:
+    - For example:
+      - Anagrams → Same characters with the same frequency.
+      - Palindromes → Symmetry in characters.
+      - Subarrays with the same sum → Prefix sums.
+  - use case: checking for existence of elements efficiently
+ */
+
+/**
+ * You may assume that each input would have exactly one solution, and you may not use the same element twice.
+ * You can return the answer in any order.
+* @param nums - array of integers
+* @param target - number 
+* @returns indices of the two numbers such that they add up to target
+*/
 
 //example nums: [2,11,7,15] target 9
 function twoSum(nums: number[], target: number): number[] {
@@ -34,13 +54,181 @@ function twoSum(nums: number[], target: number): number[] {
 };
 
 
-//Two Pointer
+//--------------- Two Pointer ---------------
+
+/**
+Types:
+    - pointer moving in the same direction (slow and fast pointer)
+    - pointers moving towards each other from opposite directions
+Benefits
+    - Reduce the number of iterations needed
+    - Track a relationship between two places
+    - Avoid extra space
+use cases:
+    - Sorted input
+    - problem involving finding two elements or subsets that satisfy a condition.
+    - problem involving symmetry, such as checking for palindromes or comparing elements from both ends of a structure.
+    - Fixed window size or range
+    - partitioning or rearranging elements based on a condition
+ */
+
+
+
+//1. Example: Opposite direction pointers 
+function isPalindrome(s: string): boolean {
+    // Check for undefined or null input. If the string is invalid, return false immediately.
+    if (s === undefined || s === null ) return false
+    
+    // Initialize the 'front' pointer to the start of the string.
+    let front = 0;
+    // Initialize the 'rear' pointer to the last index of the string.
+    let rear = s.length - 1
+
+    // Continue looping as long as the pointers have not crossed or met.
+    while ( front < rear) {
+        // Move the front pointer forward, skipping any non-alphanumeric characters.
+        while (front < rear && !isAlphaNumeric(s[front])) front++
+        
+        // Move the rear pointer backward, skipping any non-alphanumeric characters.
+        while (front < rear && !isAlphaNumeric(s[rear])) rear --
+        
+        // If the current alphanumeric characters pointed to do not match,
+        // the string is not a palindrome. Return false.
+        if (s[front].toLowerCase() !== s[rear].toLowerCase()) return false
+        
+        // If they match, move both pointers inward to check the next pair.
+        front++;
+        rear--;
+    }
+    
+    // If the loop completes without returning false, the string is a valid palindrome.
+    return true
+};
+
+
+//2. See linked list code
+// ---------------- Sliding Window -------------------
+/**
+    - leverages the above Two pointer technique to create a window of elements to process at a time
+    - enables efficient processing of subarrays/substrings without re-evaluating the entire entry
+    - Types
+        - Fixed Window
+            - e.g find the maximum average of any sub array k
+            - e.g return the sum of every k-length block
+            - e.g find the subarray of length k with the largest/smallest X
+        - Dynamic window
+            - e.g find the length of the longest substring with at most k unique characters
+            - e.g whats the smallest subarray with a sum greater than a target
+            - e.g return the longest window where a certain rule is valid
+
+ */
 
 
 
 
+//1. Fixed Window
 
-//Sliding Window
+/**
+ * Given an array nums consistiing
+ * 
+ * Ex: nums = [1,2,3,7,4,1], k = 3
+
+ * @param nums 
+ * @param k 
+ * @returns number -> max sliding window
+ */
+function maxSlidingWindow(nums: number[], k: number): number {
+    // Initialize a variable to store the sum of the current sliding window.
+    let windowSum = 0
+    
+    // --- 1. Calculate the sum of the first window (Initialization) ---
+    
+    // Iterate from index 0 up to (but not including) k.
+    for (let i = 0; i < k; i++) {
+        // Add the value of the current element to the initial window sum.
+        windowSum += nums[i]
+    }
+
+    // Initialize the maximum sum found so far with the sum of the first window.
+    let largest = windowSum
+
+    // --- 2. Slide the window across the rest of the array ---
+    
+    // Start the main loop. 'rightWindow' is the index of the element entering the window.
+    // It starts at k because the first window goes up to k-1.
+    for (let rightWindow = k; rightWindow < nums.length; rightWindow++) {
+        // Calculate the index of the element that is leaving the window from the left.
+        let leftOutside = rightWindow - k
+        
+        // Subtract the value of the element that just exited the window.
+        windowSum -= nums[leftOutside]
+        
+        // Add the value of the new element that just entered the window (constant-time update).
+        windowSum += nums[rightWindow]
+        
+        // Update 'largest' with the maximum of the current window sum and the previously largest sum.
+        largest = Math.max(largest, windowSum)
+    }
+    
+    // Return the final maximum sum found.
+    return largest
+};
+
+
+
+//2. Dynamic window
+
+
+/**
+ * Given a string s, find the length of the longest substring without duplicate characters.
+ * s consists of English letters, digits, symbols and spaces.
+ * 
+ * Ex abcdbea
+ * 
+ * fw |  s[fw] | bw | s[bw]
+ * 0 | a | 0 | a
+ * @param s 
+ */
+
+function lengthOfLongestSubstring(s: string): number {
+    
+    // Handle edge cases: if the string is null or undefined, the length is 0.
+    if (s === null || s === undefined) return 0
+    // Handle the trivial case: a single character string has a length of 1.
+    if (s.length === 1) return 1
+
+    // Stores the maximum length of a non-repeating substring found so far.
+    let longestSubtring = 0
+    // Hash map to store the frequency (count) of characters within the current window.
+    let charSeenCount = {}
+    // The left pointer (or start) of the sliding window.
+    let backWindow = 0;
+
+    // The main loop: 'frontWindow' is the right pointer, which expands the window.
+    for (let frontWindow = 0; frontWindow < s.length; frontWindow++) {
+        // Initialize the character count to 0 if it doesn't exist.
+        if (!charSeenCount[s[frontWindow]]) {
+            charSeenCount[s[frontWindow]] = 0
+        }
+        // Increment the count of the character entering the window.
+        charSeenCount[s[frontWindow]] += 1
+        
+        // This 'while' loop contracts the window from the left.
+        // It runs if the character count at 'frontWindow' is > 1 (a duplicate exists).
+        while (charSeenCount[s[frontWindow]] > 1) {
+            // Decrement the count of the character exiting the window (at 'backWindow').
+            charSeenCount[s[backWindow]] -= 1
+            // Slide the left pointer forward, shrinking the window until the duplicate is gone.
+            backWindow++
+        }
+        // Calculate the current window size (right - left + 1) and update the maximum length found.
+        longestSubtring = Math.max(longestSubtring, frontWindow - backWindow + 1)
+    }
+    // Return the final maximum length.
+    return longestSubtring
+};
+
+
 
 
 //Backtracking
