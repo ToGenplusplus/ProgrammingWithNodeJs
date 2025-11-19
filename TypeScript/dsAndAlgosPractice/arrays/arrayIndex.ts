@@ -54,6 +54,80 @@ function twoSum(nums: number[], target: number): number[] {
 };
 
 
+// ----------- Binary Search ----------------
+/**
+ Used to find an element within a sorted data structure (usually array) in O(log(n)) time.
+
+Elements in the list dont need to be sorted but need to be Monotonic - in a specified order
+
+Ex: [1, 2 3, 4, 5] - values from index 0 to 5 are always increasing -> Monotonic
+
+Ex: [false , false, true, true, true] - once the value becomes true, it stays true -> Monotonic
+
+Ex: [1, 2, 3, 4, 0] - values increase all the way until the last index -> Non Monotonic
+ */
+
+//find the index of the first true value in a  monotonic boolean array
+function findBoundary (bools: boolean[]):number {
+    let boundaryIndex = -1
+
+    let [start, end] = [0, bools.length - 1]
+
+    while (start <= end) {
+        let mid = (start + end ) / 2
+        if (bools[mid]) {
+            // true value found but we want to ensure we are finding the first true value
+            boundaryIndex = mid
+            //continue searching left of the array
+            end = mid - 1
+        } else {
+            // search right for first true value
+            start = mid + 1
+        }
+    }
+
+    return boundaryIndex
+}
+
+
+/**
+ * Sorted array of unique integers rotated at a certain unknown pivot point 
+*
+* find the index of the minimum element in this array
+ * Ex: [30, 40, 50, 10, 20]
+ * A -> 3
+ * 
+ * Ex: [3, 5, 7, 11, 14, 16, 19, 2]
+ * A -> 7
+ * 
+ * This problem can be reshaped as finding the first true value in a list of serted booleans
+ * the first true value is the minimum element
+ * ex: [30, 40, 50, 10, 20] -> [false, false, false, true, true]
+ * 
+ * so we can apply the binary search principle for an efficient algorithm
+ */
+function findMinRotatedSortedArray (arr: number[]): number {
+    let boundaryIndex = -1
+
+    let [start, end] = [0, arr.length - 1]
+
+    while (start <= end) {
+        let mid = (start + end ) / 2
+        if (arr[mid] <= arr[arr.length - 1]) {
+            // true value found but we want to ensure we are finding the first true value
+            boundaryIndex = mid
+            //continue searching left of the array
+            end = mid - 1
+        } else {
+            // search right for first true value
+            start = mid + 1
+        }
+    }
+
+    return boundaryIndex
+}
+
+
 //--------------- Two Pointer ---------------
 
 /**
