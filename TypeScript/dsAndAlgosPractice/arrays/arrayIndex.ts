@@ -308,3 +308,33 @@ function lengthOfLongestSubstring(s: string): number {
 
 
 //Backtracking
+
+
+// ---- Prefix Sum -----
+
+/**
+- transform an original array into a new array, where each element stores the sum of all elements up to and including that position in the original array.
+- useful for efficiently solving problems involving range queries on arrays
+- The primary motivation for using the Prefix Sum array is to calculate the sum of any subarray (range) in constant time, $O(1)$.
+Ex: arr =[2, 5, 1, 6, 3] 
+Result: [2, 7, 8, 14, 17]
+ */
+
+function prefixSum(arr: number[]): number[] {
+    let pfSum = new Array<number>(arr.length)
+
+    pfSum[0] = arr[0]
+
+    for (let i = 1; i < arr.length; i++) {
+        pfSum[i] = pfSum[i - 1] + arr[i]
+    }
+
+    return pfSum
+}
+
+function prefixSumInPlace(arr: number[]) {
+
+    for (let i = 1; i < arr.length; i++) {
+        arr[i] = arr[i - 1] + arr[i]
+    }
+}
