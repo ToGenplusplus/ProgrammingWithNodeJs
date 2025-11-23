@@ -2,18 +2,16 @@
 
 export const treesMain = () => {
 
+    const t = new BinaryTree()
+    t.insert(5)
+    t.insert(6)
+    t.insert(7)
+    t.insert(8)
+    t.insert(9)
+    t.insert(10)
+    t.insert(11)
+
+    const nodesLevelOrder = t.levelOrderTraversal()
+    console.log(nodesLevelOrder)
+
 }
-
-
-// ----- Breadth First Search -----
-
-/**
-- Algorithm for traversing nodes in a tree, visiting all nodes at the same level before going to the next level
-- How it works:
-    - establish a queue to hold values for the current level being explored in the tree
-    - using a loop, traverse each node
-    - a branching step where nodes are added to the queue
-
-- Use cases:
-    - finding the first match/closest node to the root
- */

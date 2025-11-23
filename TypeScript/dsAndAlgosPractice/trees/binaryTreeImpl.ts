@@ -88,19 +88,28 @@ class BinaryTree<T> {
             return this.searchNode(node.right, value);
         }
     }
-    
-    // Example of a traversal method: In-Order Traversal (Left -> Root -> Right)
-    public inOrderTraversal(node: TreeNode<T> | null = this.root): T[] {
-        const result: T[] = [];
-        this.traverse(node, result);
-        return result;
-    }
-    
-    private traverse(node: TreeNode<T> | null, result: T[]): void {
-        if (node !== null) {
-            this.traverse(node.left, result);
-            result.push(node.value);
-            this.traverse(node.right, result);
+
+    /**
+        -  Breadth First Search Pattern
+        - Algorithm for traversing nodes in a tree, visiting all nodes at the same level before going to the next level
+        - How it works: 
+            - establish a queue to hold values for the current level being explored in the tree
+            - using a loop, traverse each node
+            - a branching step where nodes are added to the queue
+
+        - Use cases:
+            - finding the first match/closest node to the root
+    */
+    levelOrderTraversal(): T[] {
+        if (this.root === null) return []
+        const nodesQueue = [this.root]
+        const result: T[] = []
+        while (nodesQueue.length > 0) {
+            let currNode = nodesQueue.shift()
+            result.push(currNode.value)
+            currNode.left !== null && nodesQueue.push(currNode.left)
+            currNode.right !== null && nodesQueue.push(currNode.right)
         }
+        return result
     }
 }

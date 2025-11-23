@@ -1,3 +1,4 @@
+
 // ------------------------------------
 // 1. ListNode Class
 // Defines the structure of a single element (node) in the list.
@@ -17,7 +18,7 @@ class ListNode<T> {
 // 2. SinglyLinkedList Class
 // Manages the list operations, tracking the head and size.
 // ------------------------------------
-class SinglyLinkedList<T> {
+export class SinglyLinkedList<T> {
     // The first node in the list. Initially null (empty list).
     private head: ListNode<T> | null;
     // The last node in the list. Used to optimize append/insertAtEnd to O(1).
