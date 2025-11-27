@@ -121,25 +121,3 @@ function groupAnagramsUsingSorting(strs: string[]): string[][] {
 
     return Array.from(map.values());
 };
-
-/**
-Pattern used for solving this groupAnagrams problem: Categorization by Canonical Representation (Hashing/Mapping).
-
-The goal is to efficiently group items that are logically equivalent but physically different (like "listen" and "silent").
-
-The pattern is to map all physically equivalent inputs to a single, identical, predictable key.
-
-Input: A collection of items that need grouping (e.g., words, numbers, objects).
-
-Transformation (The Key): Create a Canonical Representation for each item. This is the single, unique form that all equivalent inputs share.
-
-Grouping (The Map): Use a Hash Map where the Canonical Representation (the key) points to an array (the group).
-
-Output: Extract the values from the hash map.
-
-
-Identifying this pattern as a possible solution:
-
-whenever you see the word "group," "count," or "categorize" in a coding problem, 
-your first thought should be: "What is the simplest, unique key I can generate for every equivalent input?
- */
