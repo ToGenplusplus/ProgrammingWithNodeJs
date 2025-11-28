@@ -35,7 +35,7 @@ Clarification questions:
 
 ## 📋 Array Algorithmic Techniques & Patterns
 
-### 1. 🧮 Frequency Hashing (Counting)
+### 🧮 Frequency Hashing (Counting)
 
 * **Goal:** Transform a massive, repetitive input list into a concise summary of unique items and their counts.
 * **Mechanism:** Use a **Hash Map** (`Map<number, number>`) to store the mapping $\text{item} \rightarrow \text{count}$.
@@ -45,7 +45,7 @@ Clarification questions:
 
 ---
 
-### 2. 🧮 Categorization by Canonical Representation (Hashing/Mapping)
+### 🧮 Categorization by Canonical Representation (Hashing/Mapping)
 
 * **Goal:** Efficiently **group items** that are logically equivalent but physically different (like "listen" and "silent").
 * **Transformation (The Key):** Create a **Canonical Representation** for each item (the single, unique, hashable form shared by all equivalent inputs).
@@ -56,7 +56,7 @@ Clarification questions:
 
 ---
 
-### 3. 🧺 Bucket Sort (Indexing by Count)
+### 🧺 Bucket Sort (Indexing by Count)
 
 * **Goal:** Sort items based on a property (like frequency) in **linear time ($O(N)$)**, avoiding $O(N \log N)$ comparison sorting.
 * **Mechanism:** Create an auxiliary array (the **Buckets**) where the array **index represents the sorting key** (the frequency), and the array **value holds the list of items** that share that key.
@@ -66,7 +66,7 @@ Clarification questions:
 
 ---
 
-### 4. ➕ The Prefix Sum Pattern
+### ➕ The Prefix Sum Pattern
 
 * **Goal:** Calculate the sum of elements within any subarray or range in **$O(1)$ time** after an initial $O(N)$ pre-processing step.
 * **Mechanism:** Create a **Prefix Sum Array (P)** where $P[i]$ stores the cumulative sum of all elements up to index $i-1$.
@@ -77,7 +77,7 @@ Clarification questions:
 
 ---
 
-### 5. ✖️ The Prefix/Suffix Product Pattern
+### ✖️ The Prefix/Suffix Product Pattern
 
 * **Goal:** Calculate the product of all elements to the left and to the right of each index $i$ in **$O(N)$ time** without using division.
 * **Mechanism:** Uses two passes (Dynamic Programming/Memoization):
@@ -86,10 +86,30 @@ Clarification questions:
 * **Time Complexity:** $O(N)$ (Two passes over the array).
 * **Space Complexity:** $O(1)$ auxiliary space (excluding the output array).
 * **Example Problem:** `productExceptSelf`.
+---
 
+### 🔑 Constraint Tracking (Set Hashing)
+
+
+* **Goal:** Achieve $O(1)$ average time complexity for checking if an item already exists in a given group.
+* **Mechanism:** Use a **Set** data structure for each unique constraint group (Row 0, Row 1, Column 0, Box 0, etc.).
+* **Recognition:** Any time a problem asks you to check for **uniqueness or repetition** across multiple, overlapping groups, think about using a map of sets (or multiple arrays of sets) to track which items are "taken" by which group.
+* **Example Problem:** `validSudoku`.
+
+---
+
+### 🗺️ Coordinate Mapping & Grouping
+
+
+* **Goal:** Convert two continuous coordinates (R, C) into a single, discrete identifier for a larger, partitioned zone (a Box Index).
+* **Mechanism:** Use **integer division** to map coordinates to groups. For an $N \times N$ grid divided into $n \times n$ sub-boxes:
+    * $\text{Box Row Index} = \lfloor \frac{\text{Row Index}}{n} \rfloor$
+    * $\text{Box Col Index} = \lfloor \frac{\text{Column Index}}{n} \rfloor$
+* **Recognition:** Look for problems where you iterate over a grid, but the logic needs to group elements into **non-standard, fixed-size chunks** or blocks (e.g., diagonally, or in fixed squares).
+* **Example Problem:** `validSudoku`.
 ---
 ### Other userful tips
 
 - can an optimal solution be found by iterating through the array from the end?
   - e.g if we needed to find the elements in an array that are greater than all the elements to the right of itself (the leaders).
-- Can an optimal solution be found by revering the elements of the array?
+- Can an optimal solution be found by reversing the elements of the array?
