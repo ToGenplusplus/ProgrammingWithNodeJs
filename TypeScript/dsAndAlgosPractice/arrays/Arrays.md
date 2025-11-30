@@ -37,6 +37,7 @@ Clarification questions:
 | Pattern | Primary Goal | Recognition Cues & Triggers | Time Complexity |
 | :--- | :--- | :--- | :--- |
 | **1. 🧮 Frequency Hashing** | Count occurrences / Check uniqueness. | **"Count," "Frequency," "Occurrence," "Unique," "Most/Least Frequent."** | $O(N)$ |
+| **1. 🧮 Set Hashing** | Check uniqueness. | **"Existence," "Frequency,"** of related elements | $O(N)$ |
 | **2. 🧮 Canonical Grouping** | Group logically equivalent items. | **"Group," "Categorize," "Find all equivalents."** (Requires generating a standardized key, like sorting a string). | $O(N \cdot K)$ |
 | **3. 🧺 Bucket Sort** | Sort by frequency/value in linear time. | **Sorting is too slow ($>O(N \log N)$)** and the sort key has a **limited, known integer range (0 to $N$)**. | $O(N)$ |
 | **4. ➕ Prefix Sum / Product** | Calculate range sums/products in $O(1)$. | **"Sum of Subarray," "Range Sum," "Product Except Self,"** or any problem requiring repeated calculations over array ranges. | $O(N)$ setup, $O(1)$ query |
@@ -51,17 +52,32 @@ Clarification questions:
 
 These patterns transform the array structure to simplify counting and grouping.
 
-#### 1. 🧮 Frequency Hashing (Counting)
+#### 🧮 Frequency Hashing (Counting)
 * **Goal:** Quickly summarize unique elements and their counts.
 * **Mechanism:** Use a **Hash Map** (`Map`) where $\text{item} \rightarrow \text{count}$.
 * **Recognition:** The problem explicitly uses terms like **"count," "frequency," "occurrence," or "unique."**
 
-#### 2. 🧮 Categorization by Canonical Representation
+#### 🔑 Set Hashing for Uniqueness and $O(1)$ Lookup
+
+* **Goal:** Substitute the slow search of an unsorted array ($O(N)$ lookup) with the fast lookup of a hash set ($O(1)$ lookup).
+* **Mechanism:** Convert the input array into a **Set**. This allows you to check if a related element ($x+1$ or $x-1$) exists in the collection in constant time.
+* **Recognition Trigger:** Any problem where the core operation is **checking the existence** or **frequency** of related values (like $x+1$ or $x-1$) and an $O(N \log N)$ sorting step is forbidden or too slow.
+
+
+#### 🎯 The $O(N)$ Start Condition Optimization
+
+* **Goal:** To ensure that the tracing step (the inner `while` loop) is only executed a total of $N$ times across the entire algorithm.
+* **Mechanism:** You only allow the sequence trace to begin if the current number, $x$, **is the absolute start of a sequence**.
+    * **The Check:** If $x-1$ is present in the set, then $x$ is not a starter, and you immediately skip it (`continue`).
+    * If $x-1$ is *not* present, then $x$ **is** the starter, and you begin the trace (the `while` loop runs). 
+* **Recognition Trigger:** Look for problems where you are calculating the **length of a structure** (like a sequence, streak, or path) and a naive traversal would lead to redundant recalculations that start in the middle of an already processed structure. The solution is to mandate that work only begins at the unique **boundary condition** (the lowest/highest element).
+
+#### 🧮 Categorization by Canonical Representation
 * **Goal:** Efficiently **group** items that are logically equivalent (e.g., anagrams).
 * **Key Insight:** Generate a **Canonical Key** (a unique, hashable form) for all equivalent inputs. For anagrams ("silent", "listen"), the key is the sorted string ("eilnst").
 * **Recognition:** Look for the words **"group," "categorize," or "find all equivalents."** You must first define the simplest, unique key that represents equivalence.
 
-#### 3. 🧺 Bucket Sort (Indexing by Count)
+#### 🧺 Bucket Sort (Indexing by Count)
 * **Goal:** Achieve an $O(N)$ sort when standard comparison sorts are too slow.
 * **Mechanism:** The **value/frequency** becomes the **index** in an auxiliary array (the **Buckets**).
 * **Recognition:** Use when the value you are sorting by (the frequency or the element itself) has a **known, limited, and positive integer range** (e.g., $0$ to $N$).
