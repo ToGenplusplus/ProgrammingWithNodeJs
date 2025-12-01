@@ -43,7 +43,7 @@ Clarification questions:
 | **4. ➕ Prefix Sum / Product** | Calculate range sums/products in $O(1)$. | **"Sum of Subarray," "Range Sum," "Product Except Self,"** or any problem requiring repeated calculations over array ranges. | $O(N)$ setup, $O(1)$ query |
 | **5. 🔑 Constraint Tracking** | Validate uniqueness across multiple groups. | **Grid/Board problems** where elements must be unique across **Rows, Columns, AND Sub-Sections**. | $O(N^2)$ |
 | **6. 🗺️ Coordinate Mapping** | Group grid elements into fixed blocks. | **Grid iteration** requiring analysis of non-standard, fixed-size chunks (e.g., $3 \times 3$ boxes) using integer math. | $O(N^2)$ |
-
+| **7. ↔️ Two-Pointer** | Reduce search space in sorted arrays; find pairs or manage windows. | Array is **"Sorted"** (crucial) or can be sorted; finding a **"pair"** or **"target sum"**; manipulating a **"Window"** (sliding or fixed-size). | $O(N)$ |
 ***
 
 ## 💡 Detailed Pattern Breakdown & Refinements
@@ -84,11 +84,42 @@ These patterns transform the array structure to simplify counting and grouping.
 
 ---
 
+#### ↔️ The Two-Pointer Pattern
+
+* **Goal:** Reduce the $O(N^2)$ search space in arrays to linear $O(N)$ time by making an informed decision about the next search area in every step.
+* **Mechanism:** The pattern uses two indices (pointers) that move based on a comparison with a target value or condition.
+* **Recognition Trigger:** Problems involving an **already sorted array** (or one that can be sorted) where you need to find a **pair** (sum, difference, product) or manipulate a **contiguous subarray/window** (longest/shortest subarray, in-place manipulation).
+
+***
+
+#### 🅰️ Converging Pointers (Finding a Pair/Target)
+
+* **Goal:** Find a specific pair of elements in a sorted array that satisfies a target condition (e.g., $A[L] + A[R] = K$).
+* **Mechanism:**
+    1.  Initialize **Left** pointer ($L$) at the start and **Right** pointer ($R$) at the end. 
+    2.  Pointers move **inward** toward the center.
+    3.  If the current sum is **too small**, move $L$ right ($L++$) to include a **larger** number.
+    4.  If the current sum is **too large**, move $R$ left ($R--$) to include a **smaller** number.
+* **Recognition Trigger:** **Sorted array** problems asking to find a **pair** or target **sum/difference/product**.
+
+***
+
+#### 🅱️ Sliding Window / Fast & Slow Pointers
+
+* **Goal:** Optimize the search for the longest/shortest contiguous subarray (window) that meets a condition, or perform efficient in-place array manipulation.
+* **Mechanism:**
+    1.  Initialize **Slow ($L$)** and **Fast ($R$)** pointers at the start. 
+    2.  The **Fast ($R$) pointer** expands the window.
+    3.  If the condition is violated (or met, depending on the goal), the **Slow ($L$) pointer** contracts the window or handles data modification.
+* **Recognition Trigger:** Problems involving **contiguous subarrays/substrings** (Sliding Window), or **in-place manipulation** like removing duplicates, moving zeros, or resizing the array (Fast/Slow pointers).
+
+---
+
 ### II. Dynamic Programming & Range Patterns
 
 These patterns utilize pre-processing to speed up subsequent queries.
 
-#### 4. ➕ Prefix Sum / Product Patterns (Two Implementation Strategies)
+#### ➕ Prefix Sum / Product Patterns (Two Implementation Strategies)
 
 | Strategy | Goal | Implementation | Recognition & Use Case |
 | :--- | :--- | :--- | :--- |
@@ -114,12 +145,12 @@ These patterns utilize pre-processing to speed up subsequent queries.
 
 These focus on efficient uniqueness checks and spatial indexing in 2D structures.
 
-#### 5. 🔑 Constraint Tracking (Set Hashing)
+#### 🔑 Constraint Tracking (Set Hashing)
 * **Goal:** Validate **uniqueness or repetition** across multiple groups (like Rows, Columns, and Boxes).
 * **Mechanism:** Use separate **Sets** to simultaneously track the taken values for each independent constraint.
 * **Recognition:** Typical in **grid/board validation problems** where multiple rules must hold true across different slices of the data (e.g., Sudoku).
 
-#### 6. 🗺️ Coordinate Mapping & Grouping
+#### 🗺️ Coordinate Mapping & Grouping
 * **Goal:** Translate continuous $R, C$ coordinates into a discrete group ID.
 * **Mechanism:** Use **integer division** (e.g., $\lfloor R/3 \rfloor$) to determine which fixed block an element belongs to.
 * **Recognition:** Essential for **grid problems** when the logic must analyze or group elements into **fixed-size chunks** or blocks that are not simply a row or a column.
