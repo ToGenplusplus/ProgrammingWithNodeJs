@@ -37,13 +37,13 @@ Clarification questions:
 | Pattern | Primary Goal | Recognition Cues & Triggers | Time Complexity |
 | :--- | :--- | :--- | :--- |
 | **1. 🧮 Frequency Hashing** | Count occurrences / Check uniqueness. | **"Count," "Frequency," "Occurrence," "Unique," "Most/Least Frequent."** | $O(N)$ |
-| **1. 🧮 Set Hashing** | Check uniqueness. | **"Existence," "Frequency,"** of related elements | $O(N)$ |
-| **2. 🧮 Canonical Grouping** | Group logically equivalent items. | **"Group," "Categorize," "Find all equivalents."** (Requires generating a standardized key, like sorting a string). | $O(N \cdot K)$ |
-| **3. 🧺 Bucket Sort** | Sort by frequency/value in linear time. | **Sorting is too slow ($>O(N \log N)$)** and the sort key has a **limited, known integer range (0 to $N$)**. | $O(N)$ |
-| **4. ➕ Prefix Sum / Product** | Calculate range sums/products in $O(1)$. | **"Sum of Subarray," "Range Sum," "Product Except Self,"** or any problem requiring repeated calculations over array ranges. | $O(N)$ setup, $O(1)$ query |
-| **5. 🔑 Constraint Tracking** | Validate uniqueness across multiple groups. | **Grid/Board problems** where elements must be unique across **Rows, Columns, AND Sub-Sections**. | $O(N^2)$ |
-| **6. 🗺️ Coordinate Mapping** | Group grid elements into fixed blocks. | **Grid iteration** requiring analysis of non-standard, fixed-size chunks (e.g., $3 \times 3$ boxes) using integer math. | $O(N^2)$ |
-| **7. ↔️ Two-Pointer** | Reduce search space in sorted arrays; find pairs or manage windows. | Array is **"Sorted"** (crucial) or can be sorted; finding a **"pair"** or **"target sum"**; manipulating a **"Window"** (sliding or fixed-size). | $O(N)$ |
+| **2. 🧮 Set Hashing** | Check uniqueness. | **"Existence," "Frequency,"** of related elements | $O(N)$ |
+| **3. 🧮 Canonical Grouping** | Group logically equivalent items. | **"Group," "Categorize," "Find all equivalents."** (Requires generating a standardized key, like sorting a string). | $O(N \cdot K)$ |
+| **4. 🧺 Bucket Sort** | Sort by frequency/value in linear time. | **Sorting is too slow ($>O(N \log N)$)** and the sort key has a **limited, known integer range (0 to $N$)**. | $O(N)$ |
+| **5. ➕ Prefix Sum / Product** | Calculate range sums/products in $O(1)$. | **"Sum of Subarray," "Range Sum," "Product Except Self,"** or any problem requiring repeated calculations over array ranges. | $O(N)$ setup, $O(1)$ query |
+| **6. 🔑 Constraint Tracking** | Validate uniqueness across multiple groups. | **Grid/Board problems** where elements must be unique across **Rows, Columns, AND Sub-Sections**. | $O(N^2)$ |
+| **7. 🗺️ Coordinate Mapping** | Group grid elements into fixed blocks. | **Grid iteration** requiring analysis of non-standard, fixed-size chunks (e.g., $3 \times 3$ boxes) using integer math. | $O(N^2)$ |
+| **8. ↔️ Two-Pointer** | Reduce search space in sorted arrays; find pairs or manage windows. | Array is **"Sorted"** (crucial) or can be sorted; finding a **"pair"** or **"target sum"**; manipulating a **"Window"** (sliding or fixed-size). | $O(N)$ |
 ***
 
 ## 💡 Detailed Pattern Breakdown & Refinements
@@ -84,11 +84,10 @@ These patterns transform the array structure to simplify counting and grouping.
 
 ---
 
-#### ↔️ The Two-Pointer Pattern
+### ↔️ The Two-Pointer Pattern
 
 * **Goal:** Reduce the $O(N^2)$ search space in arrays to linear $O(N)$ time by making an informed decision about the next search area in every step.
 * **Mechanism:** The pattern uses two indices (pointers) that move based on a comparison with a target value or condition.
-* **Recognition Trigger:** Problems involving an **already sorted array** (or one that can be sorted) where you need to find a **pair** (sum, difference, product) or manipulate a **contiguous subarray/window** (longest/shortest subarray, in-place manipulation).
 
 ***
 
@@ -100,7 +99,8 @@ These patterns transform the array structure to simplify counting and grouping.
     2.  Pointers move **inward** toward the center.
     3.  If the current sum is **too small**, move $L$ right ($L++$) to include a **larger** number.
     4.  If the current sum is **too large**, move $R$ left ($R--$) to include a **smaller** number.
-* **Recognition Trigger:** **Sorted array** problems asking to find a **pair** or target **sum/difference/product**.
+* **Recognition Trigger:** 
+  - **Sorted array** problems asking to find a **pair** or target **sum/difference/product**.
 
 ***
 
@@ -111,7 +111,9 @@ These patterns transform the array structure to simplify counting and grouping.
     1.  Initialize **Slow ($L$)** and **Fast ($R$)** pointers at the start. 
     2.  The **Fast ($R$) pointer** expands the window.
     3.  If the condition is violated (or met, depending on the goal), the **Slow ($L$) pointer** contracts the window or handles data modification.
-* **Recognition Trigger:** Problems involving **contiguous subarrays/substrings** (Sliding Window), or **in-place manipulation** like removing duplicates, moving zeros, or resizing the array (Fast/Slow pointers).
+* **Recognition Trigger:** Problems involving 
+  - **contiguous subarrays/substrings** (Sliding Window), 
+  - **in-place manipulation** like removing duplicates, moving zeros, or resizing the array (Fast/Slow pointers).
 
 ---
 
@@ -134,6 +136,7 @@ These patterns utilize pre-processing to speed up subsequent queries.
 * **Purpose:** To enable **$O(1)$ time complexity** for any future range query.
 * **Mechanism:** Create an auxiliary array $P$ where $P[i]$ stores the cumulative sum up to index $i$.
     * To find the sum of elements in the original array from $i$ to $j$ inclusive, the formula is $\text{Sum}(i, j) = P[j] - P[i-1]$.
+* **Recognition:** The need to quickly look up a pre-calculated value based on its position in an array (like a sum, product, or maximum) is the primary trigger for the Prefix/Suffix Pattern.
 
 #### **Strategy 2: When to use the PREFIX SUM HASH MAP**
 * **Purpose:** To enable **$O(N)$ time complexity** for counting subarrays with a target sum $K$.
@@ -155,7 +158,7 @@ These focus on efficient uniqueness checks and spatial indexing in 2D structures
 * **Mechanism:** Use **integer division** (e.g., $\lfloor R/3 \rfloor$) to determine which fixed block an element belongs to.
 * **Recognition:** Essential for **grid problems** when the logic must analyze or group elements into **fixed-size chunks** or blocks that are not simply a row or a column.
 
----
+
 
 ## 🚀 General Iteration Techniques
 
