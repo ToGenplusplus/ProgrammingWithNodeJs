@@ -1,18 +1,5 @@
 # Array:
 
-- enables storing data in sequential blocks of memory
-- O(1) 
-  - retrieval of items if item location is known.
-  - appending at the end of the array (majority of the time)
-- O(n) 
-  - for traversal, insert, deletion, operations.
-- O(n logn)
-  - for sorting
-- Use case:
-  - require data stored together in memory (cache friendlyness)
-  - items are known ahead of time
-  - represent multiple items of the same type in a single variable
-
 ## Problem solving:
 
 In order to ensure you are understanding/solving the actual problem, accounting for edge cases, its important to ask
