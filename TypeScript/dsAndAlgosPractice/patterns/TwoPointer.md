@@ -110,24 +110,6 @@ Use two pointers when:
 - Remove Nth Node From End
 - Happy Number
 
-**Code Template:**
-```python
-def fast_slow_linked_list(head):
-    slow = head
-    fast = head
-    
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        
-        if slow == fast:
-            # Cycle detected
-            return True
-    
-    # No cycle or reached end
-    return False
-```
-
 ## Problem-Solving Strategy
 
 ### Step-by-Step Approach
@@ -190,36 +172,21 @@ def fast_slow_linked_list(head):
 3. **Validate Assumptions**
    - Check if array is actually sorted
    - Verify input constraints
+4. **Pointers Start Position**
+   - Efficient solution may require starting the pointers from the end of the arrays
+      - Ex: merge sorted arrays 
 
-## Time and Space Complexity
-
-### Time Complexity
-- Most two-pointer solutions: **O(n)**
-  - Each element visited at most once (or constant times)
-  - Linear traversal with pointers
-
-- With sorting: **O(n log n)**
-  - Sorting dominates the complexity
-  - Two-pointer traversal is still O(n)
-
-### Space Complexity
-- Typically: **O(1)**
-  - Only using pointer variables
-  - In-place modifications
-
-- With additional storage: **O(n)**
-  - Storing results or using auxiliary data structures
 
 ## Practice Problems by Difficulty
 
 ### Easy
-- Two Sum II - Input Array Is Sorted
 - Valid Palindrome
 - Remove Duplicates from Sorted Array
 - Move Zeroes
 - Merge Sorted Array
 
 ### Medium
+- Two Sum II - Input Array Is Sorted
 - 3Sum
 - Container With Most Water
 - Longest Substring Without Repeating Characters
