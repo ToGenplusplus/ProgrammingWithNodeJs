@@ -1,9 +1,9 @@
 import { arraysMain } from "./dsAndAlgosPractice/arrays/arrayIndex";
-import { twoPointerMain } from "./dsAndAlgosPractice/arrays/twopointer/twopointer";
+import { runTwoPointerTestCases } from "./dsAndAlgosPractice/twopointer/twoPointerTests";
 import { treesMain } from "./dsAndAlgosPractice/trees/treesIndex";
 
 const main = () => {
-    twoPointerMain()
+    runTwoPointerTestCases()
 };
 
 main();

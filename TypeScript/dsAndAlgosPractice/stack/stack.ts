@@ -1,4 +1,6 @@
 
+
+// -------------------------- EASY ---------------------------
 /**
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
@@ -25,3 +27,12 @@ OPTIMAL SOLUTION: Stack
 export function isValid(s: string): boolean {
     return true
 };
+
+
+// -------------------------- MEDIUM ---------------------------
+
+
+
+
+
+// -------------------------- HARD ---------------------------

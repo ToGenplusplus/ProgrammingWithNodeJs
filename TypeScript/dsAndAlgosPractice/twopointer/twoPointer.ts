@@ -1,19 +1,5 @@
 
-import { isAlphaNumeric } from "../../helpers";
-
-export function twoPointerMain () {
-    // console.log(`validPalindrome: A man, a plan, a canal: Panama. Expected: true Result: ${validPalindrome("A man, a plan, a canal: Panama")}`)
-    // console.log(`validPalindrome: 123321. Expected: true Result: ${validPalindrome("123321")}`)
-    // console.log(`validPalindrome: "  ". Expected: true Result: ${validPalindrome("  ")}`)
-    // console.log(`validPalindrome: race a car. Expected: false Result: ${validPalindrome("race a car")}`)
-    // console.log(`validPalindrome: 12332a. Expected: false Result: ${validPalindrome("12332a")}`)
-    // console.log(`validPalindrome: $h$2. Expected: false Result: ${validPalindrome("$h$2")}`)
-
-
-    // console.log(`rmeove duplicates: [-3, -1, -1, -1,  0, 0, 4]. Expected: [-3, -1, 0, 4, 0, 0, 4], Result: ${removeDuplicates([-3, -1, -1, -1,  0, 0, 4]).slice(0,4)}`)
-    // console.log(`rmeove duplicates: [4,4,4,4]. Expected: [4], Result: ${removeDuplicates([4,4,4,4]).slice(0, 1)}`)
-    // console.log(`rmeove duplicates: [0,0]. Expected: [0], Result: ${removeDuplicates([0,0]).slice(0,1)}`)
-}
+import { isAlphaNumeric } from "../helpers";
 
 // -------------------------- EASY ---------------------------
 /**
@@ -68,13 +54,33 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 // ------------------------ MEDIUM ---------------------------------
 
 /**
-Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, 
+find two numbers such that they add up to a specific target number. 
+Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+constraints:
+
+Your solution must use only constant extra space.
+cannot use the same element twice 
+only one solution
+
+ */
+function twoSumSorted (nums: number[], t: number): number[] {
+    return []
+}
+
+/**
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] 
+such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
 
 Constraints:
 3 <= mums.length <= 3000
 -10 ^ 5 <= nums[i] <= 10 ^ 5
+solution set must not contain duplicate triplets.
 
 Examples
 
@@ -88,7 +94,7 @@ The distinct triplets are [-1,0,1] and [-1,-1,2].
 Notice that the order of the output and the order of the triplets does not matter.
  */
 function threeSum(nums: number[]): number[][] {
-return []
+    return []
 }
 
 
@@ -115,14 +121,22 @@ Examples
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 Explanation:  
-In this case, the max area of water (blue section) the container can contain is 49.
-height[1] = 8, height[8] = 7, 7 is the minimum height, so the length
+In this case, the max area of water the container can contain is 49.
+height[1] = 8, height[8] = 7, 7 is the minimum height (length)
 difference between index 8 and index 1 = 7 (width)
 Area = length * width = 7 * 7 = 49 
 
+constraints
+
+minimum width is 1
+2 <= height.length <= 10 ^ 5 (10,000)
+0 <= heing[i] <= 10 ^4
+guaranteed one solution
+no time or space complexity constraint (most optimal solution)
+
  */
-export function maxArea(height: number[], expected: number): number {
-    return expected
+export function maxArea(height: number[]): number {
+    return 0
 };
 
 
