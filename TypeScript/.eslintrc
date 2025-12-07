@@ -1,0 +1,102 @@
+module.exports = {
+    // 1. Root Configuration
+    root: true,
+
+    // 2. Parser
+    // Specifies the parser for TypeScript code.
+    parser: '@typescript-eslint/parser',
+
+    // 3. Parser Options
+    parserOptions: {
+        // Use the latest ECMAScript version (2020 or 2021 is common).
+        ecmaVersion: 2021, 
+        // Specifies the type of source code. 'module' is standard for modern TS.
+        sourceType: 'module', 
+        // Crucial for rules that require type information (like some performance rules).
+        project: './tsconfig.json', 
+    },
+
+    // 4. Extends
+    // Specifies which configurations to extend, ordered from general to specific.
+    extends: [
+        // Standard ESLint recommended rules
+        'eslint:recommended',
+        
+        // TypeScript standard rules recommended by the plugin
+        // 'plugin:@typescript-eslint/recommended', 
+        
+        // Rules that require type information (stricter checks)
+        // 'plugin:@typescript-eslint/recommended-requiring-type-checking', 
+        
+        // Disables ESLint rules that conflict with Prettier (MUST be last)
+        "plugin:prettier/recommended"
+    ],
+
+    // 5. Plugins
+    // Specifies which plugins to use.
+    plugins: [
+        '@typescript-eslint', 
+        // Add other plugins here, e.g., 'react', 'jest', 'import'
+    ],
+
+    // 6. Environments
+    // Specifies the environments where the code runs.
+    env: {
+        node: true,
+    },
+
+    // 7. Rules Customization
+    // Override specific rules or add custom rules.
+    rules: {
+        // --- General ESLint Rules ---
+        'no-console': 'warn', // Discourage console.log in production code
+        'no-unused-vars': 'off', // Use the TypeScript rule instead
+        'eqeqeq': ['error', 'always', { 'null': 'ignore' }], // Enforce strict equality (===)
+        'prefer-const': 'error',
+
+        // --- TypeScript-Specific Rules ---
+        '@typescript-eslint/explicit-module-boundary-types': 'off', // Allow implicit return types for functions
+        '@typescript-eslint/no-explicit-any': 'warn', // Allow 'any' but warn against it
+        '@typescript-eslint/no-unused-vars': [
+            'error',
+            { 
+                argsIgnorePattern: '^_', // Allows using '_' for unused arguments
+                varsIgnorePattern: '^_',
+                caughtErrors: 'all',
+            },
+        ],
+        '@typescript-eslint/no-non-null-assertion': 'off', // Allow the non-null assertion operator (!)
+
+        // --- Code Style/Structure ---
+        'curly': 'error', // Enforce curly braces for control flow statements
+        'indent': 'off', // Disabled as Prettier handles indentation
+
+        // --- Naming Conventions (Recommended for Senior Codebases) ---
+        '@typescript-eslint/naming-convention': [
+            'error',
+            { 
+                selector: 'interface',
+                format: ['PascalCase'],
+                custom: {
+                    regex: '^I[A-Z]', // Optional: Enforce 'I' prefix for interfaces
+                    match: false,
+                },
+            },
+            {
+                selector: 'typeAlias',
+                format: ['PascalCase'],
+            },
+            {
+                selector: 'variable',
+                format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+            }
+        ],
+    },
+    
+    // 8. Ignore Patterns
+    ignorePatterns: [
+        'dist', // Compiled output
+        'node_modules/', 
+        '*.js', // Ignore generated JavaScript files if linting both
+    ],
+};

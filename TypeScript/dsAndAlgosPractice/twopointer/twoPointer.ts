@@ -140,6 +140,27 @@ export function maxArea(height: number[]): number {
 };
 
 
+/**
+Given a string s, find the length of the longest substring without duplicate characters.
+
+substring - contiguous non-empty sequence of characters within a string
+
+CONSTRAINTS:
+
+s consists of English letters, digits, symbols and spaces.
+0 <= s.length <= 5 * 10 ^ 4
+
+examples:
+s = "abcabcbb" -> 3 "abc" or "bca"
+s = "bbbbb" -> 1, "b"
+s = "  231 1#" -> 4 " 231"
+s = "     " -> 0 all spaces
+ */
+export function lengthOfLongestSubstring(s: string): number {
+    return 0
+};
+
+
 
 // ------------------------ HARD ---------------------------------
 
