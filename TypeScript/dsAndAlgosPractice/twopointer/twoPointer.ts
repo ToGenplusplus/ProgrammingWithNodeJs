@@ -1,5 +1,4 @@
-
-import { isAlphaNumeric } from "../helpers";
+import { isAlphaNumeric } from '../helpers/helpers';
 
 // -------------------------- EASY ---------------------------
 /**
@@ -16,10 +15,9 @@ can str be undefined or empty string?
 s contains spaces, alphanumeric and non alphanumeric characters
 
  */
-function validPalindrome(str: string):boolean {
-    return false
+function validPalindrome(str: string): boolean {
+  return false;
 }
-
 
 /**
 Given a sorted integer array nums, modify nums in place to remove all duplicates.
@@ -32,10 +30,7 @@ solution must use o(1) space complexity
 - 10 ^ 7 <= nums[i].length <= 10 ^ 7
 
  */
-function removeDuplicates(nums: number[]) {
-
-}
-
+function removeDuplicates(nums: number[]) {}
 
 /**
 merge sorted array nums1 with m numbers 
@@ -47,9 +42,7 @@ Output: [1,2,2,3,5,6]
 Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
 The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
  */
-function merge(nums1: number[], m: number, nums2: number[], n: number): void {
-
-};
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {}
 
 // ------------------------ MEDIUM ---------------------------------
 
@@ -67,8 +60,8 @@ cannot use the same element twice
 only one solution
 
  */
-function twoSumSorted (nums: number[], t: number): number[] {
-    return []
+function twoSumSorted(nums: number[], t: number): number[] {
+  return [];
 }
 
 /**
@@ -94,10 +87,8 @@ The distinct triplets are [-1,0,1] and [-1,-1,2].
 Notice that the order of the output and the order of the triplets does not matter.
  */
 function threeSum(nums: number[]): number[][] {
-    return []
+  return [];
 }
-
-
 
 /**
 You are given an integer array height of length n. 
@@ -136,9 +127,8 @@ no time or space complexity constraint (most optimal solution)
 
  */
 export function maxArea(height: number[]): number {
-    return 0
-};
-
+  return 0;
+}
 
 /**
 Given a string s, find the length of the longest substring without duplicate characters.
@@ -157,17 +147,32 @@ s = "  231 1#" -> 4 " 231"
 s = "     " -> 0 all spaces
  */
 export function lengthOfLongestSubstring(s: string): number {
-    return 0
-};
+  return 0;
+}
 
+/**
+Given an array nums with n objects colored red, white, or blue, sort them in-place 
+so that objects of the same color are adjacent, with the colors in the order 
+red (0), white, (1), and blue(2).
 
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+constraints:
+You must solve this problem without using the library's sort function.
+length of nums?  1<= nums.length <= 300
+memory constraint - no, follow up is to do a one pass with only constant extra space
+time complextiy constraint - no
+
+examples:
+nums = [2,0,2,1,1,0] -> [0,0,1,1,2,2]
+ */
+export function sortColors(nums: number[]): void {}
 
 // ------------------------ HARD ---------------------------------
-
 
 /**
  trapping rain water
  */
 function trap(height: number[]): number {
-return 0
-};
+  return 0;
+}

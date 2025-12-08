@@ -1,4 +1,3 @@
-import { isAlphaNumeric } from "../helpers";
+import { isAlphaNumeric } from '../helpers/helpers';
 
-export const arraysMain = () => {
-};
+export const arraysMain = () => {};

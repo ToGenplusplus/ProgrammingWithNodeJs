@@ -20,6 +20,7 @@ The two pointer pattern is a technique that uses two references (pointers) to tr
 ### Problem Characteristics
 
 Use two pointers when:
+
 - The problem asks for optimization in terms of space complexity (in-place operations)
 - A brute force approach would require nested loops (O(n²)) but can be optimized to O(n)
 - You need to process elements from both ends of the array
@@ -31,11 +32,13 @@ Use two pointers when:
 ### 1. Opposite Direction (Converging Pointers)
 
 **Pattern Description:**
+
 - One pointer starts at the beginning (left = 0)
 - Another pointer starts at the end (right = n - 1)
 - Pointers move toward each other until they meet
 
 **When to Use:**
+
 - Array/string is sorted
 - Looking for pairs that sum to a target
 - Palindrome verification
@@ -43,68 +46,75 @@ Use two pointers when:
 - Container with most water type problems
 
 **Example Problems:**
+
 - Two Sum II (sorted array)
 - Valid Palindrome
 - Container With Most Water
 - Trapping Rain Water
 - 3Sum
 
-
 ### 2. Same Direction (Fast and Slow Pointers)
 
 **Pattern Description:**
+
 - Both pointers start at the beginning
 - One pointer (slow) moves one step at a time
 - Other pointer (fast) moves ahead based on conditions
 
 **When to Use:**
+
 - Removing duplicates in-place
 - Moving elements that meet certain criteria
 - Partitioning arrays
 - Finding elements to remove or keep
 
 **Example Problems:**
+
 - Remove Duplicates from Sorted Array
 - Remove Element
 - Move Zeroes
 - Partition Array
 
-
 ### 3. Sliding Window (Special Case of Two Pointers)
 
 **Pattern Description:**
+
 - Both pointers define a window [left, right]
 - Expand window by moving right pointer
 - Shrink window by moving left pointer
 - Maintains a valid window based on conditions
 
 **When to Use:**
+
 - Finding subarrays with specific properties
 - Longest/shortest substring problems
 - Problems with contiguous sequences
 - Window size constraints
 
 **Example Problems:**
+
 - Longest Substring Without Repeating Characters
 - Minimum Window Substring
 - Maximum Sum Subarray of Size K
 - Longest Repeating Character Replacement
 
-
 ### 4. Linked List (Fast and Slow Runner)
 
 **Pattern Description:**
+
 - Slow pointer moves one node at a time
 - Fast pointer moves two nodes at a time
 - Used for cycle detection and finding middle
 
 **When to Use:**
+
 - Detecting cycles in linked lists
 - Finding the middle of a linked list
 - Finding the nth node from the end
 - Checking if linked list is a palindrome
 
 **Example Problems:**
+
 - Linked List Cycle
 - Find Middle of Linked List
 - Remove Nth Node From End
@@ -174,34 +184,39 @@ Use two pointers when:
    - Verify input constraints
 4. **Pointers Start Position**
    - Efficient solution may require starting the pointers from the end of the arrays
-      - Ex: merge sorted arrays 
-
+     - Ex: merge sorted arrays
+5. **N pointers**
+   - Some problems may require using more than 2 pointers but still uses the same technique to solve the problem
+     - Ex: sort Colors (Dutch National Flag)
 
 ## Practice Problems by Difficulty
 
 ### Easy
+
 - Valid Palindrome
 - Remove Duplicates from Sorted Array
 - Move Zeroes
 - Merge Sorted Array
 
 ### Medium
+
 - Two Sum II - Input Array Is Sorted
 - 3Sum
 - Container With Most Water
 - Longest Substring Without Repeating Characters
-- Minimum Window Substring
 - Sort Colors (Dutch National Flag)
 - Linked List Cycle II
 - Remove Nth Node From End of List
 
 ### Hard
+
 - Trapping Rain Water
 - Minimum Window Substring
 - Substring with Concatenation of All Words
 - Sliding Window Maximum
 
 ## Decision Tree for Two Pointer Pattern
+
 ```
 Is the input sorted?
 ├─ Yes
