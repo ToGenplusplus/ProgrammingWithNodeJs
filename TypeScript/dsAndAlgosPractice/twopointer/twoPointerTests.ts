@@ -1,35 +1,11 @@
-import { TestCase } from '../helpers/testHelpers';
+import { runTests } from '../helpers/testHelpers';
+import { TestCase } from '../types';
 import { lengthOfLongestSubstring, maxArea, sortColors } from './twoPointer';
 
 export function runTwoPointerTestCases() {
   // runTests("containerWithMostWater(maxArea)", maxAreaTestCases)
-  // runTests("lengthOfLongestSubstring", lengthOfLongestSubstring, longestSubstringTestCases)
-  runTests('sortColors', sortColors, sortColorsTestCases);
-}
-
-function runTests(testName: string, testFunction: Function, testCases: TestCase<any, any>[]) {
-  let passed = 0;
-  console.log(`--- Running ${testName} Tests ---`);
-
-  for (const test of testCases) {
-    const functionToTestInput = test.input;
-    const result = testFunction(functionToTestInput);
-    if (result) {
-      if (result === test.expected) {
-        console.log(`✅ PASS: ${test.description ?? ''}`);
-        passed++;
-      } else {
-        console.error(`❌ FAIL: ${test.description ?? ''}`);
-        console.error(`   Input: [${test.input}]`);
-        console.error(`   Expected: ${test.expected}, Got: ${result}`);
-      }
-    } else {
-      //void test case (assuming in place modification)
-      console.error(`   Input: [${test.input}]`);
-      console.error(`   Expected: ${test.expected}, Got: ${functionToTestInput}`);
-    }
-  }
-  console.log(`\nResults: ${passed}/${testCases.length} tests passed.`);
+  runTests('lengthOfLongestSubstring', lengthOfLongestSubstring, longestSubstringTestCases);
+  // runTests('sortColors', sortColors, sortColorsTestCases);
 }
 
 const maxAreaTestCases: TestCase<number[], number>[] = [

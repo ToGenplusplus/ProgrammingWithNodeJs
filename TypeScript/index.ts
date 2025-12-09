@@ -1,9 +1,7 @@
-import { arraysMain } from "./dsAndAlgosPractice/arrays/arrayIndex";
-import { runTwoPointerTestCases } from "./dsAndAlgosPractice/twopointer/twoPointerTests";
-import { treesMain } from "./dsAndAlgosPractice/trees/treesIndex";
+import { dsAndAlogsMain } from './dsAndAlgosPractice/dsAndAlgosIndex';
 
 const main = () => {
-    runTwoPointerTestCases()
+  dsAndAlogsMain();
 };
 
 main();

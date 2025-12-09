@@ -36,6 +36,11 @@ Use two pointers when:
 - One pointer starts at the beginning (left = 0)
 - Another pointer starts at the end (right = n - 1)
 - Pointers move toward each other until they meet
+  - **The pointer that moves is determined by the condition needing to be met**:
+  - If the problem asks you to find a pair in a sorted array that meets a sum target:
+    - Move the pointer that will bring the sum closer to the target.
+  - If the problem asks you to maximize a value (like Area) where the width is always shrinking
+    - Always move the pointer associated with the limiting factor ($\min(L, R)$), as that's the only way you can possibly find a larger value.
 
 **When to Use:**
 
@@ -111,6 +116,12 @@ Use two pointers when:
 - Detecting cycles in linked lists
 - Finding the middle of a linked list
 - Finding the nth node from the end
+  - In this variation, the movement is sequential, not simultaneous:
+  - Fast Head Start: Move the fast pointer $N$ steps ahead of the slow pointer.
+    - Movement: fast = fast.next (repeated $N$ times)
+  - Simultaneous Advance: Move both the slow and fast pointers one step at a time until the fast pointer reaches the end (null).
+    - Movement: slow = slow.next and fast = fast.next.Result:
+  - When fast reaches null, the slow pointer will be exactly at the $N^{th}$ node from the end.
 - Checking if linked list is a palindrome
 
 **Example Problems:**

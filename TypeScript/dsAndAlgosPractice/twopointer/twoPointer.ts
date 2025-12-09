@@ -147,7 +147,9 @@ s = "  231 1#" -> 4 " 231"
 s = "     " -> 0 all spaces
  */
 export function lengthOfLongestSubstring(s: string): number {
-  return 0;
+  let windowMap: Record<string, number> = {};
+  let longest = 0;
+  return longest;
 }
 
 /**
@@ -172,6 +174,18 @@ export function sortColors(nums: number[]): void {}
 
 /**
  trapping rain water
+
+ Given n non-negative integers representing an elevation map where the width of each bar is 1, 
+ compute how much water it can trap after raining.
+
+ constraints
+ height.length?
+ height[i] range
+
+ examples
+ Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: In this case, 6 units of rain water are being trapped.
  */
 function trap(height: number[]): number {
   return 0;
