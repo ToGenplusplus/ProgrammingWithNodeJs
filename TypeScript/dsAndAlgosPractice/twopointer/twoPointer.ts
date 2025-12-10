@@ -1,4 +1,5 @@
 import { isAlphaNumeric } from '../helpers/helpers';
+import { FunctionParams } from '../types';
 
 // -------------------------- EASY ---------------------------
 /**
@@ -169,6 +170,63 @@ examples:
 nums = [2,0,2,1,1,0] -> [0,0,1,1,2,2]
  */
 export function sortColors(nums: number[]): void {}
+
+/**
+Given an array of positive integers nums and a positive integer target, 
+return the minimal length of a subarray whose sum is greater than or equal to target. 
+If there is no such subarray, return 0 instead.
+
+constraints?
+1 <= target <= 109
+1 <= nums.length <= 10^5
+1 <= nums[i] <= 10^4
+
+examples:
+
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+ */
+export function minSubArrayLen(params: FunctionParams): number {
+  const target = params.param1;
+  const nums = params.param2;
+
+  let minLength = Infinity;
+
+  return minLength === Infinity ? 0 : minLength;
+}
+
+/**
+You are given a string s and an integer k. 
+You can choose any character of the string and change it to any other uppercase English character. 
+You can perform this operation at most k times.
+
+Return the length of the longest substring containing the same letter you can get after performing 
+the above operations.
+
+constraints
+k range
+s range
+types of characters in s - only upper case english letters
+
+examples
+Input: s = "ABAB", k = 2
+Output: 4
+Explanation: Replace the two 'A's with two 'B's or vice versa.
+
+Input: s = "AABABBA", k = 1
+Output: 4
+Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA".
+The substring "BBBB" has the longest repeating letters, which is 4.
+There may exists other ways to achieve this answer too.
+ */
+
+function longestRepCharReplacement(params: FunctionParams): number {
+  const s = params.param1;
+  const k = params.param2;
+  let maxLength = 0;
+  return maxLength;
+}
 
 // ------------------------ HARD ---------------------------------
 

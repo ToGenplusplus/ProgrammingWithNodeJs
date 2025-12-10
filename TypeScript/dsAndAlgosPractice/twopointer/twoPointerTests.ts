@@ -1,11 +1,12 @@
 import { runTests } from '../helpers/testHelpers';
-import { TestCase } from '../types';
-import { lengthOfLongestSubstring, maxArea, sortColors } from './twoPointer';
+import { FunctionParams, TestCase } from '../types';
+import { lengthOfLongestSubstring, maxArea, minSubArrayLen, sortColors } from './twoPointer';
 
 export function runTwoPointerTestCases() {
   // runTests("containerWithMostWater(maxArea)", maxAreaTestCases)
-  runTests('lengthOfLongestSubstring', lengthOfLongestSubstring, longestSubstringTestCases);
+  // runTests('lengthOfLongestSubstring', lengthOfLongestSubstring, longestSubstringTestCases);
   // runTests('sortColors', sortColors, sortColorsTestCases);
+  runTests('minSubArrayLen', minSubArrayLen, minSubArrayLenTestCases);
 }
 
 const maxAreaTestCases: TestCase<number[], number>[] = [
@@ -106,5 +107,29 @@ const sortColorsTestCases: TestCase<number[], number[]>[] = [
   {
     input: [2, 2, 2],
     expected: [2, 2, 2],
+  },
+];
+
+const minSubArrayLenTestCases: TestCase<FunctionParams, number>[] = [
+  {
+    input: {
+      param1: 7,
+      param2: [2, 3, 1, 2, 4, 3],
+    },
+    expected: 2,
+  },
+  {
+    input: {
+      param1: 1,
+      param2: [1, 4, 4],
+    },
+    expected: 1,
+  },
+  {
+    input: {
+      param1: 4,
+      param2: [1, 2, 3],
+    },
+    expected: 0,
   },
 ];

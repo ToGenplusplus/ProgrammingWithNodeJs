@@ -50,14 +50,6 @@ Use two pointers when:
 - Reversing arrays or strings
 - Container with most water type problems
 
-**Example Problems:**
-
-- Two Sum II (sorted array)
-- Valid Palindrome
-- Container With Most Water
-- Trapping Rain Water
-- 3Sum
-
 ### 2. Same Direction (Fast and Slow Pointers)
 
 **Pattern Description:**
@@ -72,13 +64,6 @@ Use two pointers when:
 - Moving elements that meet certain criteria
 - Partitioning arrays
 - Finding elements to remove or keep
-
-**Example Problems:**
-
-- Remove Duplicates from Sorted Array
-- Remove Element
-- Move Zeroes
-- Partition Array
 
 ### 3. Sliding Window (Special Case of Two Pointers)
 
@@ -95,13 +80,6 @@ Use two pointers when:
 - Longest/shortest substring problems
 - Problems with contiguous sequences
 - Window size constraints
-
-**Example Problems:**
-
-- Longest Substring Without Repeating Characters
-- Minimum Window Substring
-- Maximum Sum Subarray of Size K
-- Longest Repeating Character Replacement
 
 ### 4. Linked List (Fast and Slow Runner)
 
@@ -216,14 +194,14 @@ Use two pointers when:
 - Container With Most Water
 - Longest Substring Without Repeating Characters
 - Sort Colors (Dutch National Flag)
-- Linked List Cycle II
-- Remove Nth Node From End of List
+- Permutation in String
+- Longest Repeating Character Replacement
 
 ### Hard
 
 - Trapping Rain Water
-- Minimum Window Substring
 - Substring with Concatenation of All Words
+- Minimum Window Substring
 - Sliding Window Maximum
 
 ## Decision Tree for Two Pointer Pattern
@@ -241,13 +219,3 @@ Is the input sorted?
    ├─ Finding substring/subarray? → Sliding Window
    └─ Partitioning/rearranging? → Same Direction
 ```
-
-## Key Takeaways
-
-1. Two pointer pattern optimizes problems from O(n²) to O(n)
-2. Choose pointer direction based on problem requirements
-3. Works best with sorted data or when sorting doesn't violate constraints
-4. Essential for in-place array manipulation
-5. Master different variants: opposite direction, same direction, sliding window, fast/slow
-6. Always consider edge cases and pointer movement logic carefully
-7. Practice identifying when to apply each variant

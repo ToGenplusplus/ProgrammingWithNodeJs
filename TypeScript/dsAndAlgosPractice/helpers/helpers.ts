@@ -1,5 +1,6 @@
 /**
  Useful Information to Remember:
+ 'A' - ascii values is 65
  'a' - ascii values is 97
  Printable ASCII characters range from 32 - 127 (95 values)
  ASCII is a proper subset of Unicode
