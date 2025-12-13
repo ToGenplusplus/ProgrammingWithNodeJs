@@ -12,7 +12,7 @@ import { FunctionParams } from '../types';
     Output: false
  */
 export function isAnagram(params: FunctionParams): boolean {
-  return false;
+    return false;
 }
 
 // -------------------------- MEDIUM ---------------------------
@@ -43,7 +43,7 @@ Output: [["a"]]
 */
 
 function groupAnagrams(strs: string[]): string[][] {
-  return [];
+    return [];
 }
 
 /**
@@ -67,7 +67,7 @@ Output: 3
  */
 
 function longestConsecutive(nums: number[]): number {
-  return 0;
+    return 0;
 }
 
 /**
@@ -80,7 +80,7 @@ Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without
 
 */
 export function isValidSudoku(board: string[][]): boolean {
-  return true;
+    return true;
 }
 
 // -------------------------- HARD ---------------------------

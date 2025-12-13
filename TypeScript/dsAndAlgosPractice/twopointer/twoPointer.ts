@@ -17,7 +17,7 @@ s contains spaces, alphanumeric and non alphanumeric characters
 
  */
 function validPalindrome(str: string): boolean {
-  return false;
+    return false;
 }
 
 /**
@@ -45,6 +45,31 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
  */
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {}
 
+/**
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and 
+choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. 
+If you cannot achieve any profit, return 0.
+
+constraints?
+1 <= prices.length <= 10^5 (100,000)
+0 <= prices[i] <= 10^4
+
+examples:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Optimal solution is found, usign the sliding window technique
+ */
+function maxProfit(prices: number[]): number {
+    return 0;
+}
+
 // ------------------------ MEDIUM ---------------------------------
 
 /**
@@ -62,7 +87,7 @@ only one solution
 
  */
 function twoSumSorted(nums: number[], t: number): number[] {
-  return [];
+    return [];
 }
 
 /**
@@ -88,7 +113,7 @@ The distinct triplets are [-1,0,1] and [-1,-1,2].
 Notice that the order of the output and the order of the triplets does not matter.
  */
 function threeSum(nums: number[]): number[][] {
-  return [];
+    return [];
 }
 
 /**
@@ -128,7 +153,7 @@ no time or space complexity constraint (most optimal solution)
 
  */
 export function maxArea(height: number[]): number {
-  return 0;
+    return 0;
 }
 
 /**
@@ -140,6 +165,7 @@ CONSTRAINTS:
 
 s consists of English letters, digits, symbols and spaces.
 0 <= s.length <= 5 * 10 ^ 4
+in this situation spaces are considered non empty
 
 examples:
 s = "abcabcbb" -> 3 "abc" or "bca"
@@ -148,9 +174,12 @@ s = "  231 1#" -> 4 " 231"
 s = "     " -> 0 all spaces
  */
 export function lengthOfLongestSubstring(s: string): number {
-  let windowMap: Record<string, number> = {};
-  let longest = 0;
-  return longest;
+    let windowMap: Record<string, number> = {};
+    let longest = 0;
+
+    if (s.length === 1 && s[0] === '') return 0;
+
+    return longest;
 }
 
 /**
@@ -188,12 +217,12 @@ Output: 2
 Explanation: The subarray [4,3] has the minimal length under the problem constraint.
  */
 export function minSubArrayLen(params: FunctionParams): number {
-  const target = params.param1;
-  const nums = params.param2;
+    const target = params.param1;
+    const nums = params.param2;
 
-  let minLength = Infinity;
+    let minLength = Infinity;
 
-  return minLength === Infinity ? 0 : minLength;
+    return minLength === Infinity ? 0 : minLength;
 }
 
 /**
@@ -222,10 +251,34 @@ There may exists other ways to achieve this answer too.
  */
 
 function longestRepCharReplacement(params: FunctionParams): number {
-  const s = params.param1;
-  const k = params.param2;
-  let maxLength = 0;
-  return maxLength;
+    const s = params.param1;
+    const k = params.param2;
+
+    if (s.length === 1) return 1;
+    let maxLength = 0;
+    return maxLength;
+}
+
+/**
+Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+In other words, return true if one of s1's permutations is the substring of s2.
+
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+
+Input: s1 = "ab", s2 = "eidboaoo"
+Output: false
+constraints:
+
+1 <= s1.length, s2.length <= 104
+s1 and s2 consist of lowercase English letters.
+ */
+export function checkInclusion(params: FunctionParams): boolean {
+    const s1 = params.param1;
+    const s2 = params.param2;
+    if (s1.length > s2.length) return false;
+    return false;
 }
 
 // ------------------------ HARD ---------------------------------
@@ -246,5 +299,5 @@ Output: 6
 Explanation: In this case, 6 units of rain water are being trapped.
  */
 function trap(height: number[]): number {
-  return 0;
+    return 0;
 }
