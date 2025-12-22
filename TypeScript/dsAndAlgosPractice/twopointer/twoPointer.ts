@@ -31,7 +31,9 @@ solution must use o(1) space complexity
 - 10 ^ 7 <= nums[i].length <= 10 ^ 7
 
  */
-function removeDuplicates(nums: number[]) {}
+function removeDuplicates(nums: number[]): number {
+    return 0;
+}
 
 /**
 merge sorted array nums1 with m numbers 
