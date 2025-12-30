@@ -155,4 +155,53 @@ function dailyTemperatures(temps: number[]): number[] {
     return temps;
 }
 
+/**
+Given
+    t - number - mile to reach
+    positition - integer array of size n - starting mile of ith car
+    speed - integer array of size n - speed of ith car
+
+    A car cannot pass another car, 
+    but it can catch up and then travel next to it at the speed of the slower car.
+    A car fleet is a single car or a group of cars driving next to each other. 
+    The speed of the car fleet is the minimum speed of any car in the fleet.
+    If a car catches up to a car fleet at the mile target, 
+    it will still be considered as part of the car fleet.
+Return
+    # of cars in the fleet that will arrive at the destination
+examples
+t = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]
+fleet 1
+10 + 2 = 12
+8 + 4 = 12
+fleet 2
+0 + 1 = 1
+fleet 3
+5 + 1 = 6
+3 + 3 = 6
+result = 3
+
+Input: target = 100, position = [0,2,4], speed = [4,2,1]
+fleet 1 
+0 + 4 = 4
+2 + 2 = 4
+
+4 + min fleet speed(2) = 6
+fleet 2
+4 + 1 = 5
+5 + speed(1) = 6
+
+both fleets meet at 6, so we go at the slower speed of 1 until target
+result - only 1 fleet
+
+
+constraints
+
+
+
+ */
+function carFleet(t: number, position: number[], speed: number[]): number {
+    return 0;
+}
+
 // -------------------------- HARD ---------------------------
