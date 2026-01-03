@@ -19,8 +19,6 @@ Examples
 s = "()[]{}" -> true
 s = "([])" -> true
 Output: true
-
-OPTIMAL SOLUTION: Stack
  */
 export function isValid(s: string): boolean {
     return true;
@@ -46,6 +44,7 @@ min and max length of s
 export function removeDuplicates(s: string): string {
     return s;
 }
+// -------------------------- MEDIUM ---------------------------
 
 /**
 You are given an integer array prices where prices[i] is the price of the 
@@ -77,8 +76,6 @@ function finalPrices(prices: number[]): number[] {
     if (prices.length < 2) return prices;
     return prices;
 }
-
-// -------------------------- MEDIUM ---------------------------
 
 /**
 We are given an array asteroids of integers representing asteroids in a row.

@@ -1,16 +1,15 @@
-
 // ------------------------------------
 // 1. ListNode Class
 // Defines the structure of a single element (node) in the list.
 // ------------------------------------
-class ListNode<T> {
+export class ListNode<T> {
     public value: T;
     // 'next' is a pointer to the subsequent node, or null if this is the last node.
     public next: ListNode<T> | null;
 
-    constructor(value: T) {
+    constructor(value: T, next?: ListNode<T> | null) {
         this.value = value;
-        this.next = null;
+        this.next = next;
     }
 }
 
@@ -98,7 +97,7 @@ export class SinglyLinkedList<T> {
         if (previous) {
             previous.next = current.next;
         }
-        
+
         // Case 3: Update the tail if the deleted node was the tail.
         if (current === this.tail) {
             this.tail = previous;
