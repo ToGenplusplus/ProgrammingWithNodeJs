@@ -13,6 +13,12 @@
  it can safely represent integers up to 2^{53} - 1(Number.MAX_SAFE_INTEGER)
 
  array lengths in JS are limited to 2^{32} - 1
+
+
+ ---- Array tips ----:
+ new Array(10).fill(0)// initialize a new array of size 10 with all elements 0
+
+ Array.from({ length: 10}, () => []) ; //initialize a new array of arrays of size 10
  */
 
 export const isAlphaNumeric = (char: string) => /^[a-zA-Z0-9]$/.test(char);
